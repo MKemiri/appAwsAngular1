@@ -1,0 +1,60 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to my new application {{ title }}!
+  </h1>
+
+   <div class=row>
+   
+     
+     <h3 class="col-12"> Formulaire with material module:</h3>
+     <form [formGroup]="form" class="col-6 mx-auto"><br/><br/>
+      <!--<input type="text" formControlName="input"><br/><br/> -->
+      <mat-form-field floatPlaceholder="always">
+       <!--<mat-place-holder> name </mat-place-holder>-->
+        <input matInput type="text" placeholder="name" formControlName="input">
+        <mat-hint align="end"> {{ form.get('input').value.length}}/10</mat-hint>
+      
+      </mat-form-field><br/><br/>
+
+      <mat-form-field>
+       <!--<mat-place-holder> name </mat-place-holder>-->
+        <input matInput type="text" placeholder="email" formControlName="email">
+        <mat-hint align="end"> {{ form.get('email').value.length}}/10</mat-hint>
+        <mat-error *ngIf="form.get('email').invalid">{{ getError()}}</mat-error>
+      </mat-form-field><br/><br/>
+      <!--<input type="checkbox" formControlName="checkbox"><br/><br/>-->
+      <mat-checkbox formControlName="checkbox"> Vrai/Faux</mat-checkbox><br/><br/>
+       <mat-radio-group formControlName="radio">
+        <mat-radio-button value="Homme">Homme</mat-radio-button>
+        <mat-radio-button value="Femme">Femme</mat-radio-button>
+      </mat-radio-group><br/><br/>
+       <!--<input type="radio" formControlName="radio">Homme<br/>-->
+       <!--<input type="radio" formControlName="radio">Femme<br/><br/>-->
+       <!--<input type="radio" formControlName="slidetoggle">Homme<br/>-->
+       <!--<input type="radio" formControlName="slidetoggle">Femme<br/><br/>-->
+       <mat-slide-toggle formControlName="slidetoggle">News letter ?</mat-slide-toggle><br/><br/>
+
+       <mat-form-field>
+        <mat-select formControlName="select" placeholder="food">
+        <mat-option value="pain"> pain</mat-option>
+         <mat-option value="pate"> pate</mat-option>
+         <mat-option value="pizza"> pizza</mat-option>
+        </mat-select>
+       </mat-form-field><br/><br/>
+       <mat-slider min="0" max="10" formControlName="slider"></mat-slider><br/><br/>
+
+
+       <mat-form-field>
+      
+        <input matInput placeholder="choisir une date" [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field><br/><br/>
+      <pre>{{ form.value | json }}</pre>
+     </form>
+     
+   </div>
+</div>
+
+
